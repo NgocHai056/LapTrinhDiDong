@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:background="@color/background"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity">
+    <LinearLayout
+        android:gravity="center"
+        android:background="@color/white"
+        android:weightSum="10"
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:gravity="center_vertical"
+            android:hint="Search Shopee"
+            android:paddingLeft="10dp"
+            android:drawableStart="@drawable/baseline_search_24"
+            android:layout_weight="9"
+            android:layout_margin="10dp"
+            android:id="@+id/searchView"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:background="@drawable/border_search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.187"/>
+
+        <FrameLayout
+            android:id="@+id/btn_cart"
+            android:layout_gravity="right|center"
+            android:layout_width="50dp"
+            android:layout_height="?attr/actionBarSize">
+
+            <ImageView
+                android:background="@drawable/anim_focus"
+                android:layout_gravity="center_vertical"
+                android:id="@+id/icon_cart"
+                android:src="@drawable/baseline_shopping_cart_24"
+                android:layout_width="37dp"
+                android:layout_height="37dp"/>
+
+            <com.nex3z.notificationbadge.NotificationBadge
+                android:visibility="gone"
+                android:id="@+id/quantity_cart"
+                android:layout_gravity="top|right"
+                android:layout_width="30dp"
+                android:layout_height="27dp"/>
+
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/btn_user"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:src="@drawable/baseline_person_24" />
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nsv_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ViewFlipper
+                    android:id="@+id/viewFlipper"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp">
+
+                </ViewFlipper>
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:background="@color/white"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <GridView
+                            android:paddingRight="20dp"
+                            android:paddingLeft="20dp"
+                            android:id="@+id/gv_categories"
+                            android:layout_width="650dp"
+                            android:layout_height="65dp"
+                            android:numColumns="10" />
+                    </LinearLayout>
+
+                </HorizontalScrollView>
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="6dp"
+                    android:background="@color/white"
+                    android:padding="8dp"
+                    android:text="Sản phẩm mới"
+                    android:textColor="@color/primary"
+                    android:textSize="22dp"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:id="@+id/rcv_pd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="4dp" />
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
