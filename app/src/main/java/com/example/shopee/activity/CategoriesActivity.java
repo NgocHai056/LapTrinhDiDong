@@ -159,10 +159,7 @@ public class CategoriesActivity extends AppCompatActivity {
 
         linearLayoutManager = new GridLayoutManager(this, 2);
         linearLayoutManager.setOrientation(GridLayoutManager.VERTICAL);
-        rcv_pd.setLayoutManager(linearLayoutManager);
-
-        rcv_pd.setHasFixedSize(true);
-        products = new ArrayList<>();
+        
     }
 
     @Override
