@@ -164,32 +164,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    private boolean Login(String username, String pass) {
-        compositeDisposable.add(apiShopee.login(username, pass)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        userModel -> {
-                            if(userModel.isSuccess()) {
-                                isLogin = true;
-                                Paper.book().write("isLogin", isLogin);
-                                Utils.UserCurent = userModel.getResult().get(0);
-                                //Luu thong tin
-                                Paper.book().write("user", userModel.getResult().get(0));
-                                Intent intentMain = new Intent(getApplicationContext(), MainActivity.class);
-                                startActivity(intentMain);
-                                finish();
-                            }
-                            else {
-                                Toast.makeText(getApplicationContext(), "Tài khoản hoặc mật khẩu không chính xác", Toast.LENGTH_LONG).show();
-                            }
-                        },
-                        throwable -> {
-                            Toast.makeText(getApplicationContext(), throwable.getMessage(), Toast.LENGTH_LONG).show();
-                        }
-                ));
-        return isLogin;
-    }
+
 
     @Override
     protected void onResume() {
