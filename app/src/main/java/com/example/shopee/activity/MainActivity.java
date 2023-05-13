@@ -191,7 +191,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
             imageView9.setImageResource(R.drawable.img_9);
             viewFlipper.addView(imageView9);
 
-            //viewFlipper.setFlipInterval(9000);
+            
             viewFlipper.setAutoStart(true);
             Animation slide_in = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_in_right);
             Animation slide_out = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_out_right);
