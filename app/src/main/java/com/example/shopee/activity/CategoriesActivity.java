@@ -72,12 +72,7 @@ public class CategoriesActivity extends AppCompatActivity {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                if(isLoading == false) {
-                    if(linearLayoutManager.findLastCompletelyVisibleItemPosition() == products.size()-1) {
-                        isLoading = true;
-                        loadMore();
-                    }
-                }
+                
             }
         });
     }
@@ -140,19 +135,7 @@ public class CategoriesActivity extends AppCompatActivity {
                 ));
     }
 
-    private void ActionToolBar() {
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        toolbar.setTitle(title);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-    }
-
+    
     private void Mapping() {
         toolbar = findViewById(R.id.title_ctg);
         rcv_pd = findViewById(R.id.rcv_pd);
