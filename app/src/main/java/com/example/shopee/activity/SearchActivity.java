@@ -97,21 +97,7 @@ public class SearchActivity extends AppCompatActivity {
         });
     }
 
-    public void getDataSearch() {
-        String str_search = searchView.getQuery().toString().trim();
-        compositeDisposable.add(apiShopee.search(str_search)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                   productsModel -> {
-                       searchAdapter = new SearchAdapter(getApplicationContext(), productsModel.getResult());
-                        rcv_search.setAdapter(searchAdapter);
-                   },
-                   throwable -> {
-                       Toast.makeText(getApplicationContext(), throwable.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                ));
-    }
+    
 
     @Override
     protected void onDestroy() {
