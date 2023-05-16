@@ -15,7 +15,9 @@ import com.example.shopee.R;
 import com.example.shopee.retrofit.ApiShopee;
 import com.example.shopee.retrofit.RetrofitClient;
 import com.example.shopee.utils.Utils;
+import com.google.firebase.auth.FirebaseAuth;
 
+import io.paperdb.Paper;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
@@ -37,6 +39,37 @@ public class ForgotPassActivity extends AppCompatActivity {
         Mapping();
         ActionToolBar();
         initControll();
+    }
+    private void Mapping() {
+        Paper.init(this);
+        apiShopee = RetrofitClient.getInstance(Utils.BASE_URL).create(ApiShopee.class);
+        firebaseAuth = FirebaseAuth.getInstance();
+        user = firebaseAuth.getCurrentUser();
+
+        toolbar = findViewById(R.id.tbar_login);
+        link_signin = findViewById(R.id.link_signin);
+        input_username = findViewById(R.id.input_username);
+        input_password = findViewById(R.id.input_password);
+        btn_login = findViewById(R.id.btn_login);
+        forgotpwd_link = findViewById(R.id.forgotpwd_link);
+
+        //read data
+        if(Paper.book().read("username") != null && Paper.book().read("pass") != null) {
+            input_username.setText(Paper.book().read("username"));
+            input_password.setText(Paper.book().read("pass"));
+
+            /*if(Paper.book().read("isLogin") != null) {
+                boolean flag = Paper.book().read("isLogin");
+                if (flag) {
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Login(Paper.book().read("username"), Paper.book().read("pass"));
+                        }
+                    }, 1000);
+                }
+            }*/
+        }
     }
 
     private void initControll() {
@@ -84,16 +117,5 @@ public class ForgotPassActivity extends AppCompatActivity {
         });
     }
 
-    private void Mapping() {
-        apiShopee = RetrofitClient.getInstance(Utils.BASE_URL).create(ApiShopee.class);
-        toolbar = findViewById(R.id.tbar_forgotPass);
-        input_email = findViewById(R.id.input_email);
-        btn_sent = findViewById(R.id.btn_sent);
-    }
 
-    @Override
-    protected void onDestroy() {
-        compositeDisposable.clear();
-        super.onDestroy();
-    }
 }

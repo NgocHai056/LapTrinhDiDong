@@ -132,37 +132,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void Mapping() {
-        Paper.init(this);
-        apiShopee = RetrofitClient.getInstance(Utils.BASE_URL).create(ApiShopee.class);
-        firebaseAuth = FirebaseAuth.getInstance();
-        user = firebaseAuth.getCurrentUser();
 
-        toolbar = findViewById(R.id.tbar_login);
-        link_signin = findViewById(R.id.link_signin);
-        input_username = findViewById(R.id.input_username);
-        input_password = findViewById(R.id.input_password);
-        btn_login = findViewById(R.id.btn_login);
-        forgotpwd_link = findViewById(R.id.forgotpwd_link);
-
-        //read data
-        if(Paper.book().read("username") != null && Paper.book().read("pass") != null) {
-            input_username.setText(Paper.book().read("username"));
-            input_password.setText(Paper.book().read("pass"));
-
-            /*if(Paper.book().read("isLogin") != null) {
-                boolean flag = Paper.book().read("isLogin");
-                if (flag) {
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            Login(Paper.book().read("username"), Paper.book().read("pass"));
-                        }
-                    }, 1000);
-                }
-            }*/
-        }
-    }
 
 
 

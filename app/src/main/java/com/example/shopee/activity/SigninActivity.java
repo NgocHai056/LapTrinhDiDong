@@ -75,7 +75,18 @@ public class SigninActivity extends AppCompatActivity {
             }
         });
     }
+    private void Mapping() {
+        apiShopee = RetrofitClient.getInstance(Utils.BASE_URL).create(ApiShopee.class);
+        toolbar = findViewById(R.id.tbar_forgotPass);
+        input_email = findViewById(R.id.input_email);
+        btn_sent = findViewById(R.id.btn_sent);
+    }
 
+    @Override
+    protected void onDestroy() {
+        compositeDisposable.clear();
+        super.onDestroy();
+    }
     private void sigin() {
         String email = input_email.getText().toString().trim();
         String username = input_username.getText().toString().trim();
