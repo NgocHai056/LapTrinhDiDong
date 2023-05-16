@@ -84,15 +84,11 @@ public class SigninActivity extends AppCompatActivity {
         if(TextUtils.isEmpty(email)) {
             Toast.makeText(getApplicationContext(), "Bạn chưa nhập Email", Toast.LENGTH_LONG).show();
         }
-        else if(TextUtils.isEmpty(username)) {
-            Toast.makeText(getApplicationContext(), "Bạn chưa nhập tên người dùng", Toast.LENGTH_LONG).show();
-        }
+
         else if(TextUtils.isEmpty(password)) {
             Toast.makeText(getApplicationContext(), "Bạn chưa nhập mật khẩu", Toast.LENGTH_LONG).show();
         }
-        else if(TextUtils.isEmpty(confirmPassword)) {
-            Toast.makeText(getApplicationContext(), "Bạn chưa nhập mật khẩu xác nhận", Toast.LENGTH_LONG).show();
-        }
+
         else {
             if(password.equals(confirmPassword)) {
                 firebaseAuth = FirebaseAuth.getInstance();
