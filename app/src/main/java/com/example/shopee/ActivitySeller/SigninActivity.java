@@ -1,4 +1,4 @@
-package com.example.shopee.activity;
+package com.example.sellers.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,10 +12,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.shopee.R;
-import com.example.shopee.retrofit.ApiShopee;
-import com.example.shopee.retrofit.RetrofitClient;
-import com.example.shopee.utils.Utils;
+import com.example.sellers.R;
+import com.example.sellers.retrofit.ApiShopee;
+import com.example.sellers.retrofit.RetrofitClient;
+import com.example.sellers.utils.Utils;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -84,17 +84,17 @@ public class SigninActivity extends AppCompatActivity {
         if(TextUtils.isEmpty(email)) {
             Toast.makeText(getApplicationContext(), "Bạn chưa nhập Email", Toast.LENGTH_LONG).show();
         }
-
+        else if(TextUtils.isEmpty(username)) {
+            Toast.makeText(getApplicationContext(), "Bạn chưa nhập tên người dùng", Toast.LENGTH_LONG).show();
+        }
         else if(TextUtils.isEmpty(password)) {
             Toast.makeText(getApplicationContext(), "Bạn chưa nhập mật khẩu", Toast.LENGTH_LONG).show();
         }
-
+        else if(TextUtils.isEmpty(confirmPassword)) {
+            Toast.makeText(getApplicationContext(), "Bạn chưa nhập mật khẩu xác nhận", Toast.LENGTH_LONG).show();
+        }
         else {
             if(password.equals(confirmPassword)) {
-                if(password.length() < 6) {
-                    Toast.makeText(getApplicationContext(), "Vui lòng nhập mật khẩu dài ít nhất 6 kí tự", Toast.LENGTH_LONG).show();
-                    return;
-                }
                 firebaseAuth = FirebaseAuth.getInstance();
                 firebaseAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(SigninActivity.this, new OnCompleteListener<AuthResult>() {
@@ -103,11 +103,11 @@ public class SigninActivity extends AppCompatActivity {
                                 if(task.isSuccessful()) {
                                     FirebaseUser user = firebaseAuth.getCurrentUser();
                                     if(user != null) {
-                                        postData(email, password, username, user.getUid());
+                                        postData(email, password, confirmPassword, user.getUid());
                                     }
                                 }
                                 else {
-                                    Toast.makeText(getApplicationContext(), "Đăng kí thất bại", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(), "Email đã đăng kí", Toast.LENGTH_LONG).show();
                                 }
                             }
                         });
@@ -118,8 +118,8 @@ public class SigninActivity extends AppCompatActivity {
         }
     }
 
-    private void postData(String email, String password, String fullname, String Uid) {
-        compositeDisposable.add(apiShopee.signin(email, password, fullname, Uid)
+    private void postData(String email, String password, String username, String Uid) {
+        compositeDisposable.add(apiShopee.signin(email, password, username, Uid)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
@@ -127,7 +127,7 @@ public class SigninActivity extends AppCompatActivity {
                             if(userModel.isSuccess()) {
                                 Utils.UserCurent.setEmail(email);
                                 Utils.UserCurent.setPass(password);
-                                Utils.UserCurent.setUsername(fullname);
+                                Utils.UserCurent.setUsername(username);
                                 Toast.makeText(getApplicationContext(), "Đăng ký thành công", Toast.LENGTH_LONG).show();
                                 Intent loginIntent = new Intent(getApplicationContext(), LoginActivity.class);
                                 startActivity(loginIntent);

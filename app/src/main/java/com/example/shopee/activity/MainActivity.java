@@ -146,21 +146,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
                     ));
         }
 
-        private void getCategories() {
-            compositeDisposable.add(apiShopee.getCategories()
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(
-                            categoriesModel -> {
-                                if (categoriesModel.isSuccess()) {
-                                    categories = categoriesModel.getResult();
-                                    categoriesAdapter = new CategoriesAdapter(getApplicationContext(),R.layout.item_category, categories);
-                                    gv_categories.setAdapter(categoriesAdapter);
-                                }
-                            }
-                    )
-            );
-        }
+        
 
         private void ActionViewFlipper() {
 
