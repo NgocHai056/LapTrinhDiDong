@@ -79,23 +79,7 @@ public class SearchActivity extends AppCompatActivity {
 
     }
 
-    private void ActionToolBar() {
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                /*if(searchView.getQuery().toString() != "") {
-                    String str = "";
-                    searchView.setQuery(str, false);
-                }
-                else {*/
-                    finish();
-                //}
-            }
-        });
-    }
+    
 
     
 

@@ -50,17 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         initControll();
     }
 
-    private void ActionToolBar() {
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-    }
+    
 
     private void initControll() {
         link_signin.setOnClickListener(new View.OnClickListener() {
