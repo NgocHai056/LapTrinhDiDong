@@ -50,6 +50,7 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:inputType="textPersonName"
                 android:id="@+id/input_fullName"
                 android:ems="10"
                 android:textSize="13sp"
@@ -73,6 +74,7 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:inputType="numberDecimal"
                 android:id="@+id/input_phoneNumber"
                 android:ems="10"
                 android:textSize="13sp"

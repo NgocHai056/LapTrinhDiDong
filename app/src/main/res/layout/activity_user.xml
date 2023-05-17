@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:background="@color/background"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.UserActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        app:title="Người dùng"
+        android:id="@+id/tbar_user"
+        app:titleTextColor="@color/white"
+        android:background="@color/primary"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tbar_user">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginTop="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:drawablePadding="5dp"
+                android:drawableStart="@drawable/person_primary"
+                android:textColor="@color/black"
+                android:layout_marginBottom="2dp"
+                android:padding="10dp"
+                android:background="@color/white"
+                android:textSize="17dp"
+                android:text="Thông tin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_marginBottom="1dp"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:paddingLeft="20dp"
+                android:id="@+id/username"
+                android:text="Tran Van Nguyen"
+                android:background="@color/white"
+                android:textSize="14dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:paddingLeft="20dp"
+                android:id="@+id/email"
+                android:text="nguyen@gmail.com"
+                android:background="@color/white"
+                android:textSize="14dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_marginTop="4dp"
+                android:drawablePadding="5dp"
+                android:drawableStart="@drawable/order_primary"
+                android:textColor="@color/black"
+                android:layout_marginBottom="2dp"
+                android:padding="10dp"
+                android:background="@color/white"
+                android:textSize="17dp"
+                android:text="Đơn hàng"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_marginBottom="1dp"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:paddingLeft="20dp"
+                android:id="@+id/order_unconfimred"
+                android:text="Chờ xác nhận"
+                android:background="@color/white"
+                android:textSize="14dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_marginBottom="1dp"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:paddingLeft="20dp"
+                android:id="@+id/order_shipping"
+                android:text="Đang giao"
+                android:background="@color/white"
+                android:textSize="14dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:paddingLeft="20dp"
+                android:id="@+id/order_received"
+                android:text="Đã nhận"
+                android:background="@color/white"
+                android:textSize="14dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_marginTop="4dp"
+                android:drawablePadding="5dp"
+                android:drawableStart="@drawable/setting_primary"
+                android:textColor="@color/black"
+                android:layout_marginBottom="2dp"
+                android:padding="10dp"
+                android:background="@color/white"
+                android:textSize="17dp"
+                android:text="Thiết lập tài khoản"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_marginBottom="1dp"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:paddingLeft="20dp"
+                android:id="@+id/change_name"
+                android:text="Đổi tên"
+                android:background="@color/white"
+                android:textSize="14dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_marginBottom="1dp"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:paddingLeft="20dp"
+                android:id="@+id/change_pass"
+                android:text="Đổi mật khẩu"
+                android:background="@color/white"
+                android:textSize="14dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:paddingLeft="20dp"
+                android:id="@+id/logout"
+                android:text="Đăng xuất"
+                android:background="@color/white"
+                android:textSize="14dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
